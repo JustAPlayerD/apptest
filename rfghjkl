@@ -1,0 +1,35 @@
+import streamlit as st
+import numpy as np
+import pandas as pd
+from matplotlib import pyplot as plt
+import pylab as pl
+
+
+st.write(
+    '''
+    ### My first ST_app
+   
+    Hello world!
+    '''
+)
+# try1
+fig = plt.figure()
+x1 = [10,20,30,40,50,60,70,80]
+y1 = [10,20,30,40,50,60,70,80]
+LineName = 'line01'
+pl.plot(x1,y1,'r', label = LineName)
+pl.title('chart_line')
+pl.xlim(0,100)
+pl.ylim(0,100)
+pl.legend()
+st.pyplot(fig)
+
+option = st.radio(
+    '接收指令的裝置',
+    ['手機','桌上型裝置','手錶'])
+
+if st.button('是') == True:
+    print('已接收:'+option)
+
+TextContent = st.text_input('請輸入留言:','''點擊Enter鍵發出''', key='name')
+if TextContent != '點擊Enter鍵發出' or TextContent != None: print(st.session_state.name)
